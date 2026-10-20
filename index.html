@@ -122,20 +122,27 @@
     .button-row { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 27px; }
 
     /* Hero */
-   .hero h1 {
-    font-size: clamp(2.5rem, 4.2vw, 3.5rem);
+  .hero h1 {
+    font-size: clamp(2.6rem, 4vw, 3.4rem);
     line-height: 1.12;
-    letter-spacing: -0.04em;
+    letter-spacing: -0.045em;
     font-weight: 800;
+    max-width: 900px;
 }
 
-/* Mobile responsive */
+.hero p {
+    font-size: 1rem;
+    line-height: 1.8;
+    max-width: 680px;
+}
+
 @media (max-width: 768px) {
     .hero h1 {
-        font-size: clamp(2rem, 7vw, 2.8rem);
+        font-size: clamp(2.1rem, 7vw, 2.8rem);
         line-height: 1.15;
         letter-spacing: -0.03em;
     }
+}
 }
     .availability {
       display: inline-flex;
