@@ -4,970 +4,801 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Tanya Patel — Aspiring AI/ML Engineer and Python Developer. Explore Python applications, machine learning projects, NLP, and data analytics.">
   <meta name="theme-color" content="#080914">
+  <meta name="description" content="Tanya Patel — Python Developer and Aspiring AI/ML Engineer. Explore Python, machine learning, and data analytics projects.">
   <title>Tanya Patel | Python Developer & AI/ML Engineer</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 
   <style>
     :root {
       --bg: #080914;
       --surface: #111326;
-      --surface2: #191b35;
-      --text: #f5f7ff;
-      --muted: #a6aecb;
-      --line: #2b3051;
-      --cyan: #00e5ff;
-      --purple: #934cff;
-      --green: #64f5d2;
-      --shadow: 0 18px 48px #0007;
+      --surface2: #171a31;
+      --text: #f4f5ff;
+      --muted: #a2a8c8;
+      --cyan: #12d9f5;
+      --purple: #8b5cf6;
+      --pink: #d56bff;
+      --border: rgba(157, 166, 255, .15);
+      --gradient: linear-gradient(110deg, #16d9f5, #7770ff 58%, #d56bff);
+      --max: 1120px;
     }
 
-    * { box-sizing: border-box; }
-
-    html { scroll-behavior: smooth; }
-
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; scroll-padding-top: 90px; }
     body {
-      margin: 0;
       background: var(--bg);
       color: var(--text);
-      font-family: Inter, system-ui, -apple-system, "Segoe UI", sans-serif;
+      font-family: "DM Sans", sans-serif;
       line-height: 1.7;
+      overflow-x: hidden;
     }
-
-    a { color: inherit; text-decoration: none; }
-    button, a { -webkit-tap-highlight-color: transparent; }
-
-    #app {
-      min-height: 100vh;
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      pointer-events: none;
       background:
-        radial-gradient(ellipse at 12% 5%, #7c4dff20, transparent 34%),
-        radial-gradient(ellipse at 90% 30%, #00e5ff12, transparent 30%),
-        var(--bg);
+        radial-gradient(ellipse at 10% 15%, rgba(91, 44, 190, .17), transparent 35%),
+        radial-gradient(ellipse at 90% 45%, rgba(0, 192, 240, .08), transparent 32%);
+    }
+    a { color: inherit; text-decoration: none; }
+    button, input, textarea { font: inherit; }
+    button, a { -webkit-tap-highlight-color: transparent; }
+    .container { width: min(var(--max), 90%); margin-inline: auto; }
+    .muted { color: var(--muted); }
+    .gradient-text {
+      color: var(--cyan);
+      background: var(--gradient);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
     }
 
-    .nav-wrap {
+    /* Navigation */
+    header {
       position: sticky;
       top: 0;
-      z-index: 10;
+      z-index: 100;
+      background: rgba(8, 9, 20, .88);
       backdrop-filter: blur(18px);
-      background: #080914e8;
-      border-bottom: 1px solid var(--line);
+      border-bottom: 1px solid var(--border);
     }
-
-    nav {
-      max-width: 1150px;
-      margin: auto;
-      padding: 15px 24px;
+    .navbar {
+      min-height: 72px;
       display: flex;
-      align-items: center;
       justify-content: space-between;
-      gap: 20px;
-    }
-
-    .brand {
-      font-size: 1.45rem;
-      font-weight: 900;
-      letter-spacing: -1px;
-    }
-
-    .brand span { color: var(--cyan); }
-
-    .nav-links {
-      display: flex;
       align-items: center;
       gap: 24px;
-      color: var(--muted);
-      font-size: .9rem;
     }
-
-    .nav-links a:hover,
-    .project-links a:hover { color: var(--cyan); }
-
-    .menu-btn {
+    .logo { font-size: 1.45rem; font-weight: 800; letter-spacing: -1px; }
+    .logo span { color: var(--cyan); }
+    .nav-links { display: flex; align-items: center; gap: 26px; }
+    .nav-links a {
+      color: var(--muted);
+      font-size: .92rem;
+      transition: color .2s;
+    }
+    .nav-links a:hover, .nav-links a.active { color: var(--cyan); }
+    .menu-toggle {
       display: none;
-      border: 1px solid var(--line);
-      background: var(--surface);
       color: var(--text);
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
       padding: 8px 12px;
-      border-radius: 9px;
       cursor: pointer;
     }
 
-    main { max-width: 1150px; margin: auto; padding: 0 24px; }
-
-    .hero {
-      min-height: 620px;
-      display: grid;
-      grid-template-columns: 1.35fr .65fr;
-      align-items: center;
-      gap: 55px;
-      padding: 75px 0;
-    }
-
-    .eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      padding: 7px 13px;
-      border: 1px solid var(--line);
-      border-radius: 50px;
-      background: var(--surface);
-      color: var(--muted);
-      font-size: .82rem;
-    }
-
-    .dot {
-      width: 8px;
-      height: 8px;
-      background: var(--green);
-      border-radius: 50%;
-      box-shadow: 0 0 12px var(--green);
-    }
-
-    h1 {
-      font-size: clamp(2.8rem, 6.4vw, 5.4rem);
-      line-height: 1.06;
-      letter-spacing: -.065em;
-      margin: 25px 0 22px;
-    }
-
-    .gradient {
-      background: linear-gradient(110deg, var(--cyan), #8c70ff 55%, #ed77f5);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-    }
-
-    .hero p {
-      max-width: 650px;
-      color: var(--muted);
-      font-size: 1.06rem;
-      margin: 0 0 28px;
-    }
-
-    .actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-    }
-
+    /* Buttons */
     .btn {
       display: inline-flex;
       justify-content: center;
       align-items: center;
-      gap: 8px;
-      padding: 12px 18px;
-      border: 1px solid var(--line);
-      border-radius: 10px;
-      font-weight: 750;
-      font-size: .92rem;
-      transition: transform .2s, box-shadow .2s;
+      gap: 9px;
+      min-height: 46px;
+      padding: 11px 19px;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      color: var(--text);
+      background: var(--surface);
+      font-weight: 700;
+      font-size: .93rem;
       cursor: pointer;
+      transition: transform .2s, border-color .2s, box-shadow .2s;
     }
-
-    .btn:hover {
-      transform: translateY(-3px);
-      box-shadow: var(--shadow);
-    }
-
+    .btn:hover { transform: translateY(-3px); border-color: var(--cyan); }
     .btn-primary {
-      background: linear-gradient(110deg, #7c3aed, #5e61ff, #00cfe8);
-      color: white;
-      border-color: transparent;
-      box-shadow: 0 0 25px #814cff30;
+      color: #070917;
+      background: var(--gradient);
+      border: none;
+      box-shadow: 0 8px 28px rgba(114, 83, 255, .18);
     }
+    .btn-primary:hover { box-shadow: 0 8px 35px rgba(18, 217, 245, .22); }
+    .button-row { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 27px; }
 
-    .btn-secondary { background: var(--surface); }
-
+    /* Hero */
+    .hero { padding: 100px 0 90px; min-height: 650px; display: flex; align-items: center; }
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.6fr 1fr;
+      align-items: center;
+      gap: 55px;
+    }
+    .availability {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      border: 1px solid var(--border);
+      border-radius: 100px;
+      padding: 8px 14px;
+      color: #c6d2ff;
+      background: rgba(17, 19, 38, .8);
+      font-size: .88rem;
+    }
+    .dot {
+      width: 9px; height: 9px;
+      background: #54f5c0;
+      border-radius: 50%;
+      box-shadow: 0 0 14px #54f5c0;
+    }
+    .hero h1 {
+      margin-top: 25px;
+      font-size: clamp(2.8rem, 6.5vw, 5.25rem);
+      line-height: 1.08;
+      letter-spacing: -3px;
+      font-weight: 800;
+    }
+    .hero p { color: var(--muted); font-size: 1.05rem; max-width: 680px; margin-top: 23px; }
     .profile-card {
-      padding: 28px;
-      border: 1px solid var(--line);
-      border-radius: 25px;
-      background: linear-gradient(145deg, var(--surface), var(--surface2));
-      box-shadow: var(--shadow);
-      overflow: hidden;
       position: relative;
+      overflow: hidden;
+      padding: 28px;
+      border: 1px solid rgba(139, 92, 246, .3);
+      border-radius: 28px;
+      background: linear-gradient(145deg, rgba(26, 28, 58, .95), rgba(14, 16, 34, .96));
+      box-shadow: 0 24px 80px rgba(0, 0, 0, .22);
     }
-
-    .profile-card::before {
+    .profile-card::after {
       content: "";
       position: absolute;
-      width: 180px;
-      height: 180px;
+      width: 180px; height: 180px;
+      top: -100px; right: -65px;
+      background: rgba(139, 92, 246, .15);
       border-radius: 50%;
-      background: #874aff20;
-      top: -100px;
-      right: -60px;
     }
-
     .avatar {
-      width: 90px;
-      height: 90px;
-      display: grid;
-      place-items: center;
+      width: 88px; height: 88px;
+      display: grid; place-items: center;
       border-radius: 23px;
-      background: linear-gradient(140deg, #7c3aed, #5e61ff, #00cfe8);
+      background: var(--gradient);
       color: white;
       font-size: 2rem;
-      font-weight: 900;
-      position: relative;
-      overflow: hidden;
+      font-weight: 800;
+      margin-bottom: 22px;
     }
+    .profile-card h2 { font-size: 1.55rem; }
+    .profile-card > p { color: var(--muted); margin-top: 3px; }
+    .mini-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 25px; }
+    .mini-box { padding: 14px; background: #090b19; border: 1px solid var(--border); border-radius: 14px; }
+    .mini-box strong { display: block; font-size: .95rem; }
+    .mini-box span { display: block; color: var(--muted); font-size: .82rem; margin-top: 3px; }
 
-    .avatar img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
-    .profile-card h2 { margin: 18px 0 0; font-size: 1.45rem; }
-
-    .role { color: var(--muted); font-size: .9rem; margin-bottom: 22px; }
-
-    .stat-row {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 10px;
-    }
-
-    .stat {
-      padding: 13px;
-      border: 1px solid var(--line);
-      border-radius: 13px;
-      background: var(--bg);
-    }
-
-    .stat strong { display: block; font-size: .94rem; }
-    .stat span { color: var(--muted); font-size: .78rem; }
-
-    .section { padding: 65px 0; scroll-margin-top: 75px; }
-
-    .section-head {
-      display: flex;
-      align-items: end;
-      justify-content: space-between;
-      gap: 25px;
-      margin-bottom: 28px;
-    }
-
-    .kicker {
+    /* Shared sections */
+    section { padding: 82px 0; }
+    .section-heading { margin-bottom: 36px; }
+    .eyebrow {
+      font: 700 .78rem "Space Mono", monospace;
+      letter-spacing: 2px;
       color: var(--cyan);
       text-transform: uppercase;
-      font-size: .76rem;
-      letter-spacing: .16em;
-      font-weight: 800;
     }
-
     .section-title {
-      font-size: clamp(1.9rem, 4vw, 2.7rem);
-      line-height: 1.15;
-      letter-spacing: -.045em;
-      margin: 8px 0 0;
+      font-size: clamp(2rem, 4vw, 3.15rem);
+      line-height: 1.2;
+      letter-spacing: -1.3px;
+      margin-top: 9px;
+    }
+    .section-description { max-width: 670px; color: var(--muted); margin-top: 13px; }
+    .underline {
+      width: 65px; height: 4px;
+      border-radius: 5px;
+      background: var(--gradient);
+      margin-top: 18px;
     }
 
-    .section-sub {
-      max-width: 450px;
-      color: var(--muted);
-      margin: 0;
-      font-size: .94rem;
-    }
-
-    .about-grid {
-      display: grid;
-      grid-template-columns: 1.2fr .8fr;
-      gap: 20px;
-    }
-
-    .panel {
-      border: 1px solid var(--line);
-      background: var(--surface);
-      border-radius: 20px;
-      padding: 25px;
-    }
-
-    .panel p { color: var(--muted); margin: 0; }
-
-    .highlight-list { display: grid; gap: 17px; }
-
-    .highlight { display: flex; align-items: flex-start; gap: 12px; }
-
-    .highlight-icon {
-      flex: 0 0 36px;
-      height: 36px;
-      display: grid;
-      place-items: center;
-      background: var(--surface2);
-      color: var(--cyan);
-      border-radius: 10px;
-    }
-
-    .highlight strong { display: block; font-size: .94rem; }
-    .highlight span { color: var(--muted); font-size: .84rem; }
-
-    .skills-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 14px;
-    }
-
-    .skill-card {
-      border: 1px solid var(--line);
-      background: var(--surface);
-      border-radius: 17px;
+    /* About */
+    .about-grid { display: grid; grid-template-columns: 1.2fr .8fr; gap: 40px; align-items: start; }
+    .about-copy p { color: var(--muted); margin-bottom: 17px; }
+    .about-copy strong { color: var(--text); }
+    .stat-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; margin-top: 27px; }
+    .stat {
       padding: 19px;
-      transition: transform .2s, border-color .2s;
-    }
-
-    .skill-card:hover { transform: translateY(-4px); border-color: var(--cyan); }
-
-    .skill-card .symbol { font-size: 1.4rem; margin-bottom: 8px; }
-    .skill-card h3 { margin: 0 0 12px; font-size: 1rem; }
-
-    .tags { display: flex; flex-wrap: wrap; gap: 7px; }
-
-    .tag {
-      background: var(--surface2);
-      border: 1px solid var(--line);
-      color: var(--muted);
-      border-radius: 7px;
-      padding: 4px 8px;
-      font-size: .75rem;
-    }
-
-    .projects {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 18px;
-    }
-
-    .project {
-      border: 1px solid var(--line);
       background: var(--surface);
-      border-radius: 21px;
-      overflow: hidden;
-      transition: transform .2s, box-shadow .2s;
+      border: 1px solid var(--border);
+      border-radius: 15px;
+    }
+    .stat strong { display: block; font-size: 1.1rem; color: var(--cyan); }
+    .stat span { color: var(--muted); font-size: .88rem; }
+
+    /* Skills */
+    .skills-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+    .skill-card, .project-card, .timeline-card, .education-card {
+      background: rgba(17, 19, 38, .82);
+      border: 1px solid var(--border);
+      border-radius: 19px;
+    }
+    .skill-card { padding: 24px; }
+    .skill-card h3 { color: var(--cyan); font-size: 1.05rem; margin-bottom: 17px; }
+    .skill-list { display: flex; flex-wrap: wrap; gap: 9px; }
+    .skill-tag {
+      display: inline-block;
+      padding: 7px 11px;
+      border: 1px solid var(--border);
+      border-radius: 9px;
+      background: #0a0c1b;
+      color: #d8dcf8;
+      font-size: .85rem;
     }
 
-    .project:hover { transform: translateY(-4px); box-shadow: var(--shadow); }
-
-    .project-art {
-      min-height: 155px;
-      padding: 24px;
+    /* Projects */
+    .projects-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+    .project-card {
+      padding: 25px;
       display: flex;
-      align-items: center;
-      justify-content: center;
-      background: linear-gradient(135deg, #171044, #6d28d9 60%, #c026d3);
-      position: relative;
-      overflow: hidden;
+      flex-direction: column;
+      min-height: 300px;
+      transition: transform .25s, border-color .25s;
     }
-
-    .project-art::before,
-    .project-art::after {
-      content: "";
-      position: absolute;
-      border: 1px solid #ffffff40;
-      border-radius: 50%;
-      width: 190px;
-      height: 190px;
+    .project-card:hover { transform: translateY(-5px); border-color: rgba(18, 217, 245, .55); }
+    .project-top { display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+    .project-icon {
+      width: 49px; height: 49px;
+      display: grid; place-items: center;
+      background: rgba(139, 92, 246, .14);
+      border: 1px solid rgba(139, 92, 246, .24);
+      border-radius: 14px;
+      font-size: 1.45rem;
     }
-
-    .project-art::after { width: 130px; height: 130px; }
-
-    .art-icon { z-index: 1; font-size: 3.2rem; }
-
-    .art-chat { background: linear-gradient(135deg, #082f49, #0e7490, #22d3ee); }
-    .art-sales { background: linear-gradient(135deg, #422006, #b45309, #fbbf24); }
-    .art-web { background: linear-gradient(135deg, #171044, #4338ca, #818cf8); }
-
-    .project-body { padding: 22px; }
-
-    .project-top {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 12px;
+    .project-type { color: var(--cyan); font: .74rem "Space Mono", monospace; }
+    .project-card h3 { font-size: 1.35rem; margin-top: 18px; }
+    .project-card p { color: var(--muted); font-size: .95rem; margin-top: 10px; }
+    .project-tags { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 17px; }
+    .project-tags span {
+      font-size: .76rem; color: #c4c8e7;
+      background: rgba(139, 92, 246, .1);
+      border: 1px solid rgba(139, 92, 246, .16);
+      border-radius: 7px; padding: 4px 8px;
     }
+    .project-links { display: flex; flex-wrap: wrap; gap: 16px; margin-top: auto; padding-top: 23px; }
+    .text-link { color: var(--cyan); font-size: .9rem; font-weight: 700; }
+    .text-link:hover { text-decoration: underline; }
 
-    .project h3 { margin: 0; font-size: 1.14rem; }
+    /* Experience and education */
+    .timeline { display: grid; gap: 18px; }
+    .timeline-card { padding: 25px; border-left: 3px solid var(--purple); }
+    .timeline-head { display: flex; justify-content: space-between; align-items: start; gap: 15px; flex-wrap: wrap; }
+    .timeline-head h3 { font-size: 1.17rem; }
+    .timeline-date { color: var(--cyan); font: .78rem "Space Mono", monospace; }
+    .timeline-company { color: var(--cyan); margin-top: 4px; font-size: .92rem; }
+    .timeline-card ul { color: var(--muted); padding-left: 20px; margin-top: 13px; }
+    .timeline-card li { margin-top: 7px; }
+    .education-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; }
+    .education-card { padding: 24px; }
+    .education-card h3 { font-size: 1.08rem; }
+    .education-card p { color: var(--muted); margin-top: 7px; }
+    .education-card .degree { color: var(--cyan); font-size: .9rem; }
 
-    .project-type {
-      color: var(--cyan);
-      font-size: .72rem;
-      font-weight: 800;
-      white-space: nowrap;
-    }
-
-    .project p { color: var(--muted); font-size: .9rem; margin: 12px 0 17px; }
-
-    .project-links {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 15px;
-      margin-top: 19px;
-      font-size: .86rem;
-      font-weight: 750;
-    }
-
-    .project-links a { color: var(--cyan); }
-
-    .timeline { display: grid; gap: 14px; }
-
-    .experience {
-      display: grid;
-      grid-template-columns: 48px 1fr;
-      gap: 16px;
-      padding: 22px;
-      border: 1px solid var(--line);
-      background: var(--surface);
-      border-radius: 18px;
-    }
-
-    .experience-icon {
-      width: 46px;
-      height: 46px;
-      display: grid;
-      place-items: center;
-      background: var(--surface2);
-      color: var(--cyan);
+    /* Contact */
+    .contact-grid { display: grid; grid-template-columns: .85fr 1.15fr; gap: 35px; }
+    .contact-copy { color: var(--muted); margin: 12px 0 24px; }
+    .contact-list { display: grid; gap: 12px; }
+    .contact-item {
+      display: flex; align-items: center; gap: 13px;
+      padding: 15px;
+      border: 1px solid var(--border);
       border-radius: 13px;
-      font-size: 1.25rem;
-    }
-
-    .experience h3 { margin: 0; font-size: 1.05rem; }
-
-    .experience .meta {
-      color: var(--cyan);
-      font-size: .83rem;
-      font-weight: 700;
-      margin: 3px 0 8px;
-    }
-
-    .experience p { color: var(--muted); margin: 0; font-size: .9rem; }
-
-    .education-card {
-      border: 1px solid var(--line);
       background: var(--surface);
-      border-radius: 18px;
-      padding: 22px;
+      overflow-wrap: anywhere;
     }
-
-    .education-card h3 { margin: 0 0 5px; }
-    .education-card p { color: var(--muted); margin: 0; }
-
-    .contact {
-      border: 1px solid var(--line);
-      border-radius: 25px;
-      padding: clamp(25px, 5vw, 45px);
-      background: linear-gradient(130deg, var(--surface), var(--surface2));
-      display: grid;
-      grid-template-columns: 1fr auto;
-      align-items: center;
-      gap: 30px;
+    .contact-item .contact-icon { font-size: 1.2rem; }
+    .contact-item small { display: block; color: var(--muted); }
+    .contact-item:hover { border-color: var(--cyan); }
+    .contact-form { padding: 25px; background: var(--surface); border: 1px solid var(--border); border-radius: 19px; }
+    .form-group { margin-bottom: 17px; }
+    .form-group label {
+      display: block; margin-bottom: 7px;
+      font: .76rem "Space Mono", monospace;
+      letter-spacing: 1px; color: #c9cdef;
     }
-
-    .contact p { color: var(--muted); max-width: 580px; margin: 12px 0 0; }
-
-    .contact-actions { display: flex; flex-direction: column; gap: 10px; min-width: 190px; }
-
-    .contact-email { color: var(--cyan); overflow-wrap: anywhere; }
-
-    footer {
-      max-width: 1150px;
-      margin: auto;
-      padding: 23px 24px;
-      border-top: 1px solid var(--line);
-      display: flex;
-      justify-content: space-between;
-      gap: 18px;
-      color: var(--muted);
-      font-size: .82rem;
+    .form-group input, .form-group textarea {
+      width: 100%; padding: 13px 14px;
+      background: #090b19; border: 1px solid var(--border);
+      border-radius: 10px; color: var(--text); outline: none;
     }
+    .form-group input:focus, .form-group textarea:focus { border-color: var(--cyan); }
+    .form-group textarea { min-height: 135px; resize: vertical; }
+    .contact-form .btn { width: 100%; }
+    .form-note { color: var(--muted); font-size: .8rem; margin-top: 12px; }
 
-    footer a { color: var(--cyan); }
+    footer { padding: 25px 0; border-top: 1px solid var(--border); text-align: center; color: var(--muted); font-size: .88rem; }
+    footer strong { color: var(--text); }
+    footer span { color: var(--cyan); }
 
-    @media (max-width: 900px) {
-      .hero { grid-template-columns: 1fr; gap: 30px; }
-      .profile-card { max-width: 500px; }
-      .skills-grid { grid-template-columns: repeat(2, 1fr); }
-      .about-grid { grid-template-columns: 1fr; }
-      .contact { grid-template-columns: 1fr; }
-      .contact-actions { flex-direction: row; flex-wrap: wrap; }
-    }
-
-    @media (max-width: 600px) {
-      nav { padding: 12px 18px; }
-      .menu-btn { display: inline-flex; }
-      .nav-links {
-        display: none;
-        position: absolute;
-        top: 58px;
-        left: 12px;
-        right: 12px;
-        padding: 16px;
-        background: var(--surface);
-        border: 1px solid var(--line);
-        border-radius: 15px;
-        flex-direction: column;
-        align-items: stretch;
-        gap: 13px;
-      }
-
-      .nav-links.open { display: flex; }
-      main { padding: 0 18px; }
-      .hero { padding: 55px 0; min-height: auto; }
-      .section { padding: 48px 0; }
-      .section-head { display: block; }
-      .section-sub { margin-top: 12px; }
-      .projects { grid-template-columns: 1fr; }
-      .skills-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
-      .skill-card { padding: 13px; }
-      .experience { grid-template-columns: 38px 1fr; padding: 16px; gap: 12px; }
-      .experience-icon { width: 36px; height: 36px; }
-      footer { padding: 20px 18px; flex-direction: column; }
-    }
+    .reveal { opacity: 0; transform: translateY(18px); transition: opacity .6s ease, transform .6s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
 
     @media (prefers-reduced-motion: reduce) {
       html { scroll-behavior: auto; }
-      *, *::before, *::after { transition: none !important; }
+      *, *::before, *::after { transition-duration: .01ms !important; }
+      .reveal { opacity: 1; transform: none; }
+    }
+    @media (max-width: 850px) {
+      .hero-grid { grid-template-columns: 1fr; gap: 35px; }
+      .profile-card { max-width: 480px; }
+      .about-grid, .contact-grid { grid-template-columns: 1fr; }
+      .skills-grid { grid-template-columns: repeat(2, 1fr); }
+      .hero { padding-top: 75px; }
+    }
+    @media (max-width: 650px) {
+      .navbar { min-height: 65px; }
+      .menu-toggle { display: block; }
+      .nav-links {
+        display: none; position: absolute; top: 65px; left: 0; right: 0;
+        flex-direction: column; align-items: stretch; gap: 0;
+        padding: 10px 5% 18px; background: #0b0d1c;
+        border-bottom: 1px solid var(--border);
+      }
+      .nav-links.open { display: flex; }
+      .nav-links a { padding: 10px 0; }
+      .hero { min-height: auto; padding: 65px 0; }
+      .hero h1 { letter-spacing: -1.8px; }
+      section { padding: 62px 0; }
+      .skills-grid, .projects-grid, .education-grid { grid-template-columns: 1fr; }
+      .project-card { min-height: 280px; }
+      .button-row .btn { flex: 1 1 auto; }
+      .profile-card { padding: 23px; }
     }
   </style>
 </head>
 
 <body>
-<div id="app">
+<header>
+  <nav class="navbar container" aria-label="Main navigation">
+    <a class="logo" href="#home">Tanya<span>.</span></a>
+    <button class="menu-toggle" id="menuToggle" aria-label="Open navigation menu" aria-expanded="false">☰</button>
+    <div class="nav-links" id="navLinks">
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#projects">Projects</a>
+      <a href="#experience">Experience</a>
+      <a href="#education">Education</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </nav>
+</header>
 
-  <div class="nav-wrap">
-    <nav aria-label="Main navigation">
-      <a class="brand" href="#home">Tanya<span>.</span></a>
-      <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="navLinks">☰ Menu</button>
-
-      <div class="nav-links" id="navLinks">
-        <a href="#about">About</a>
-        <a href="#skills">Skills</a>
-        <a href="#projects">Projects</a>
-        <a href="#experience">Experience</a>
-        <a href="#education">Education</a>
-        <a href="#contact">Contact</a>
-      </div>
-    </nav>
-  </div>
-
-  <main>
-    <!-- HERO -->
-    <section class="hero" id="home">
-      <div>
-        <div class="eyebrow"><span class="dot"></span> Open to internships & freelance projects</div>
-
-        <h1>
-          Hi, I'm Tanya.<br>
-          <span class="gradient">Python Developer</span><br>
-          & Aspiring AI/ML Engineer.
-        </h1>
-
+<main>
+  <!-- HERO -->
+  <section class="hero" id="home">
+    <div class="container hero-grid">
+      <div class="reveal">
+        <div class="availability"><span class="dot"></span> Open to internships & freelance projects</div>
+        <h1>Hi, I'm Tanya.<br><span class="gradient-text">Python Developer</span><br>& Aspiring AI/ML Engineer.</h1>
         <p>
           I build practical Python applications and explore machine learning,
           NLP, and data-driven tools to turn ideas into useful products.
-          I'm currently pursuing B.Tech in CSE (AI & ML) and looking for
-          opportunities to learn, contribute, and grow.
+          I'm pursuing B.Tech in CSE (AI & ML) and looking for opportunities
+          to learn, contribute, and grow.
         </p>
-
-        <div class="actions">
+        <div class="button-row">
           <a class="btn btn-primary" href="#projects">🚀 Explore Projects</a>
-          <a class="btn btn-secondary" href="Tanya_Patel_resume.pdf" download>📄 Download Resume</a>
-          <a class="btn btn-secondary" href="#contact">Let's Connect ↗</a>
+          <a class="btn" href="Tanya_Patel_resume.pdf" download>📄 Download Resume</a>
+          <a class="btn" href="#contact">Let's Connect ↗</a>
         </div>
       </div>
 
-      <aside class="profile-card" aria-label="Profile summary">
-        <div class="avatar" aria-label="Tanya Patel initials">TP</div>
+      <aside class="profile-card reveal">
+        <div class="avatar">TP</div>
         <h2>Tanya Patel</h2>
-        <div class="role">B.Tech CSE (AI & ML) · Third Year</div>
-
-        <div class="stat-row">
-          <div class="stat">
-            <strong>Python</strong>
-            <span>Development</span>
-          </div>
-          <div class="stat">
-            <strong>AI / ML</strong>
-            <span>Applied projects</span>
-          </div>
+        <p>B.Tech CSE (AI & ML) · Third Year</p>
+        <div class="mini-grid">
+          <div class="mini-box"><strong>Python</strong><span>Development</span></div>
+          <div class="mini-box"><strong>AI / ML</strong><span>Applied projects</span></div>
+          <div class="mini-box"><strong>Data</strong><span>Analysis & insights</span></div>
+          <div class="mini-box"><strong>Web Apps</strong><span>Interactive tools</span></div>
         </div>
       </aside>
-    </section>
+    </div>
+  </section>
 
-    <!-- ABOUT -->
-    <section class="section" id="about">
-      <div class="section-head">
-        <div>
-          <div class="kicker">A little about me</div>
-          <h2 class="section-title">Curious mind. Practical builder.</h2>
-        </div>
-        <p class="section-sub">
-          I enjoy learning by building projects, solving practical problems,
-          and improving applications through hands-on development.
-        </p>
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="container reveal">
+      <div class="section-heading">
+        <span class="eyebrow">01. About Me</span>
+        <h2 class="section-title">A little about <span class="gradient-text">my journey</span></h2>
+        <div class="underline"></div>
       </div>
-
       <div class="about-grid">
-        <div class="panel">
+        <div class="about-copy">
           <p>
-            I'm a third-year B.Tech Computer Science student specializing in
-            Artificial Intelligence and Machine Learning. My main interests
-            are Python development, machine learning, NLP, data analysis, and
-            interactive applications. Through personal and internship projects,
-            I'm building experience in taking ideas from code to working demos.
-            I'm eager to contribute to real projects while continuing to learn.
+            I'm a third-year <strong>B.Tech Computer Science student specializing
+            in Artificial Intelligence and Machine Learning</strong>. I enjoy
+            building projects that help me apply programming and data concepts
+            to practical problems.
           </p>
+          <p>
+            My current interests include <strong>Python development, machine
+            learning, NLP, data analysis, and AI-powered applications</strong>.
+            I learn by building, testing, improving, and documenting projects.
+          </p>
+          <p>
+            I'm looking for internships and suitable freelance opportunities
+            where I can contribute, strengthen my skills, and work with a team
+            on real-world problems.
+          </p>
+          <div class="button-row">
+            <a class="btn" href="https://github.com/tanyapl-17" target="_blank" rel="noopener noreferrer">GitHub Profile ↗</a>
+            <a class="btn" href="https://www.linkedin.com/in/tanya-patel-632153352/" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a>
+          </div>
         </div>
-
-        <div class="panel highlight-list">
-          <div class="highlight">
-            <div class="highlight-icon">✦</div>
-            <div>
-              <strong>Build with purpose</strong>
-              <span>Useful, user-friendly applications</span>
-            </div>
-          </div>
-
-          <div class="highlight">
-            <div class="highlight-icon">⌘</div>
-            <div>
-              <strong>Learn by doing</strong>
-              <span>Python and AI/ML projects</span>
-            </div>
-          </div>
-
-          <div class="highlight">
-            <div class="highlight-icon">↗</div>
-            <div>
-              <strong>Keep improving</strong>
-              <span>Readable code and practical solutions</span>
-            </div>
-          </div>
+        <div class="stat-grid">
+          <div class="stat"><strong>Python</strong><span>Core development skill</span></div>
+          <div class="stat"><strong>AI / ML</strong><span>Learning through projects</span></div>
+          <div class="stat"><strong>Streamlit</strong><span>Interactive web apps</span></div>
+          <div class="stat"><strong>GitHub</strong><span>Project version control</span></div>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- SKILLS -->
-    <section class="section" id="skills">
-      <div class="section-head">
-        <div>
-          <div class="kicker">What I work with</div>
-          <h2 class="section-title">Skills & tools</h2>
-        </div>
-        <p class="section-sub">
-          Technologies used in my coursework, practice, and projects.
-        </p>
+  <!-- SKILLS -->
+  <section id="skills">
+    <div class="container reveal">
+      <div class="section-heading">
+        <span class="eyebrow">02. Technical Skills</span>
+        <h2 class="section-title">Tools I <span class="gradient-text">work with</span></h2>
+        <div class="underline"></div>
+        <p class="section-description">A selection of technologies used in my learning and projects. I continue to improve these skills through hands-on practice.</p>
       </div>
-
       <div class="skills-grid">
-        <div class="skill-card">
-          <div class="symbol">🐍</div>
-          <h3>Programming</h3>
-          <div class="tags">
-            <span class="tag">Python</span>
-            <span class="tag">C++</span>
-            <span class="tag">OOP basics</span>
+        <article class="skill-card">
+          <h3>⌘ Programming</h3>
+          <div class="skill-list">
+            <span class="skill-tag">Python</span><span class="skill-tag">SQL basics</span>
+            <span class="skill-tag">C++</span><span class="skill-tag">Java basics</span>
           </div>
-        </div>
-
-        <div class="skill-card">
-          <div class="symbol">🧠</div>
-          <h3>AI & Machine Learning</h3>
-          <div class="tags">
-            <span class="tag">scikit-learn</span>
-            <span class="tag">NLP</span>
-            <span class="tag">TF-IDF</span>
-            <span class="tag">Recommendation systems</span>
+        </article>
+        <article class="skill-card">
+          <h3>✦ AI & Machine Learning</h3>
+          <div class="skill-list">
+            <span class="skill-tag">Machine Learning</span><span class="skill-tag">NLP basics</span>
+            <span class="skill-tag">Scikit-learn</span><span class="skill-tag">Model evaluation</span>
           </div>
-        </div>
-
-        <div class="skill-card">
-          <div class="symbol">📊</div>
-          <h3>Data & Applications</h3>
-          <div class="tags">
-            <span class="tag">Pandas</span>
-            <span class="tag">Data visualization</span>
-            <span class="tag">Streamlit</span>
+        </article>
+        <article class="skill-card">
+          <h3>▤ Data & Visualization</h3>
+          <div class="skill-list">
+            <span class="skill-tag">Pandas</span><span class="skill-tag">NumPy</span>
+            <span class="skill-tag">Matplotlib</span><span class="skill-tag">Data analysis</span>
           </div>
-        </div>
-
-        <div class="skill-card">
-          <div class="symbol">🛠️</div>
-          <h3>Development Tools</h3>
-          <div class="tags">
-            <span class="tag">Git</span>
-            <span class="tag">GitHub</span>
-            <span class="tag">VS Code</span>
-            <span class="tag">HTML/CSS/JS</span>
+        </article>
+        <article class="skill-card">
+          <h3>⌘ Web & Applications</h3>
+          <div class="skill-list">
+            <span class="skill-tag">Streamlit</span><span class="skill-tag">HTML</span>
+            <span class="skill-tag">CSS</span><span class="skill-tag">JavaScript basics</span>
           </div>
-        </div>
+        </article>
+        <article class="skill-card">
+          <h3>⚙ Tools</h3>
+          <div class="skill-list">
+            <span class="skill-tag">Git</span><span class="skill-tag">GitHub</span>
+            <span class="skill-tag">VS Code</span><span class="skill-tag">Jupyter</span>
+          </div>
+        </article>
+        <article class="skill-card">
+          <h3>✧ Professional Skills</h3>
+          <div class="skill-list">
+            <span class="skill-tag">Problem-solving</span><span class="skill-tag">Communication</span>
+            <span class="skill-tag">Teamwork</span><span class="skill-tag">Continuous learning</span>
+          </div>
+        </article>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- PROJECTS -->
-    <section class="section" id="projects">
-      <div class="section-head">
-        <div>
-          <div class="kicker">Selected work</div>
-          <h2 class="section-title">Projects I've built</h2>
-        </div>
-        <p class="section-sub">
-          Practical projects combining Python, data, machine learning,
-          and interactive user experiences.
-        </p>
+  <!-- PROJECTS -->
+  <section id="projects">
+    <div class="container reveal">
+      <div class="section-heading">
+        <span class="eyebrow">03. Featured Work</span>
+        <h2 class="section-title">Projects built with <span class="gradient-text">purpose</span></h2>
+        <div class="underline"></div>
+        <p class="section-description">Explore my Python, machine learning, and data-focused projects. Open the live demos to try the deployed applications.</p>
       </div>
 
-      <div class="projects">
-
-        <!-- SALES IQ -->
-        <article class="project">
-          <div class="project-art art-sales">
-            <div class="art-icon" aria-hidden="true">📊</div>
+      <div class="projects-grid">
+        <article class="project-card">
+          <div class="project-top">
+            <div class="project-icon">📊</div>
+            <span class="project-type">DATA ANALYTICS</span>
           </div>
-          <div class="project-body">
-            <div class="project-top">
-              <h3>Sales IQ</h3>
-              <span class="project-type">DATA / ML</span>
-            </div>
-            <p>
-              An interactive sales analytics dashboard for exploring sales
-              data, visualizing business trends, and presenting prediction
-              insights through a Streamlit interface.
-            </p>
-            <div class="tags">
-              <span class="tag">Python</span>
-              <span class="tag">Pandas</span>
-              <span class="tag">Machine Learning</span>
-              <span class="tag">Streamlit</span>
-            </div>
-            <div class="project-links">
-              <a href="https://salesdemo.streamlit.app/" target="_blank" rel="noopener noreferrer">Live Demo ↗</a>
-              <a href="https://github.com/tanyapl-17/cognevance_sales_prediction" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
-            </div>
+          <h3>Sales IQ — Sales Intelligence</h3>
+          <p>A sales analytics dashboard designed to explore sales trends, prediction results, customer segments, and business insights through an interactive interface.</p>
+          <div class="project-tags">
+            <span>Python</span><span>Streamlit</span><span>Machine Learning</span><span>Data Visualization</span>
+          </div>
+          <div class="project-links">
+            <a class="text-link" href="https://salesdemo.streamlit.app/" target="_blank" rel="noopener noreferrer">Live Demo ↗</a>
+            <a class="text-link" href="https://github.com/tanyapl-17/cognevance_sales_prediction" target="_blank" rel="noopener noreferrer">Source Code ↗</a>
           </div>
         </article>
 
-        <!-- NEXA AI CHATBOT -->
-        <article class="project">
-          <div class="project-art art-chat">
-            <div class="art-icon" aria-hidden="true">💬</div>
+        <article class="project-card">
+          <div class="project-top">
+            <div class="project-icon">🤖</div>
+            <span class="project-type">AI APPLICATION</span>
           </div>
-          <div class="project-body">
-            <div class="project-top">
-              <h3>Nexa AI Chatbot</h3>
-              <span class="project-type">NLP</span>
-            </div>
-            <p>
-              A learning companion chatbot that responds to questions about
-              Python, machine learning, NLP, and study tips. Uses an
-              intent-based classification workflow.
-            </p>
-            <div class="tags">
-              <span class="tag">Python</span>
-              <span class="tag">NLP</span>
-              <span class="tag">TF-IDF</span>
-              <span class="tag">scikit-learn</span>
-            </div>
-            <div class="project-links">
-              <a href="https://nexaaibot.streamlit.app/" target="_blank" rel="noopener noreferrer">Live Demo ↗</a>
-              <a href="https://github.com/tanyapl-17/cognevance_ai_chatbot" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
-            </div>
+          <h3>Nexa AI Chatbot</h3>
+          <p>An interactive chatbot that responds to common learning questions using an intent-based NLP approach and a simple web interface.</p>
+          <div class="project-tags">
+            <span>Python</span><span>NLP</span><span>Scikit-learn</span><span>Streamlit</span>
+          </div>
+          <div class="project-links">
+            <a class="text-link" href="https://nexaaibot.streamlit.app/" target="_blank" rel="noopener noreferrer">Live Demo ↗</a>
+            <a class="text-link" href="https://github.com/tanyapl-17/cognevance_ai_chatbot" target="_blank" rel="noopener noreferrer">Source Code ↗</a>
           </div>
         </article>
 
-        <!-- MOVIE RECOMMENDATION -->
-        <article class="project">
-          <div class="project-art">
-            <div class="art-icon" aria-hidden="true">🎬</div>
+        <article class="project-card">
+          <div class="project-top">
+            <div class="project-icon">🎬</div>
+            <span class="project-type">RECOMMENDATION SYSTEM</span>
           </div>
-          <div class="project-body">
-            <div class="project-top">
-              <h3>Movie Recommendation System</h3>
-              <span class="project-type">AI / ML</span>
-            </div>
-            <p>
-              A Python recommendation project that explores movie ratings,
-              generates recommendations, and uses charts to summarize
-              patterns in the dataset.
-            </p>
-            <div class="tags">
-              <span class="tag">Python</span>
-              <span class="tag">Pandas</span>
-              <span class="tag">Recommendation systems</span>
-              <span class="tag">Streamlit</span>
-            </div>
-            <div class="project-links">
-              <a href="https://github.com/tanyapl-17/cognevance_movie_recommendation" target="_blank" rel="noopener noreferrer">GitHub Repository ↗</a>
-            </div>
+          <h3>Movie Recommendation System</h3>
+          <p>A Python project that explores movie ratings and generates recommendations from a movie and ratings dataset.</p>
+          <div class="project-tags">
+            <span>Python</span><span>Pandas</span><span>Recommendation Logic</span><span>Data Analysis</span>
+          </div>
+          <div class="project-links">
+            <a class="text-link" href="https://github.com/tanyapl-17/cognevance_movie_recommendation" target="_blank" rel="noopener noreferrer">View Project ↗</a>
           </div>
         </article>
 
-        <!-- PORTFOLIO -->
-        <article class="project">
-          <div class="project-art art-web">
-            <div class="art-icon" aria-hidden="true">⌘</div>
+        <article class="project-card">
+          <div class="project-top">
+            <div class="project-icon">💻</div>
+            <span class="project-type">PORTFOLIO</span>
           </div>
-          <div class="project-body">
-            <div class="project-top">
-              <h3>Personal Developer Portfolio</h3>
-              <span class="project-type">WEB</span>
-            </div>
-            <p>
-              A responsive personal website showcasing my skills, projects,
-              experience, and contact information with a dark-neon design.
-            </p>
-            <div class="tags">
-              <span class="tag">HTML</span>
-              <span class="tag">CSS</span>
-              <span class="tag">JavaScript</span>
-              <span class="tag">Responsive design</span>
-            </div>
-            <div class="project-links">
-              <a href="https://github.com/tanyapl-17/tanya-portfolio" target="_blank" rel="noopener noreferrer">GitHub Repository ↗</a>
-            </div>
+          <h3>Personal Developer Portfolio</h3>
+          <p>A responsive personal website presenting my skills, projects, education, and contact details in a dark neon design.</p>
+          <div class="project-tags">
+            <span>HTML</span><span>CSS</span><span>JavaScript</span><span>Responsive Design</span>
+          </div>
+          <div class="project-links">
+            <a class="text-link" href="https://tanya-patel-portfolio.vercel.app/" target="_blank" rel="noopener noreferrer">Live Website ↗</a>
+            <a class="text-link" href="https://github.com/tanyapl-17/tanya-portfolio" target="_blank" rel="noopener noreferrer">Source Code ↗</a>
           </div>
         </article>
-
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- EXPERIENCE -->
-    <section class="section" id="experience">
-      <div class="section-head">
-        <div>
-          <div class="kicker">Learning in practice</div>
-          <h2 class="section-title">Experience & growth</h2>
-        </div>
-        <p class="section-sub">
-          Internship experience and hands-on project development.
-        </p>
+  <!-- EXPERIENCE -->
+  <section id="experience">
+    <div class="container reveal">
+      <div class="section-heading">
+        <span class="eyebrow">04. Experience</span>
+        <h2 class="section-title">Learning through <span class="gradient-text">experience</span></h2>
+        <div class="underline"></div>
+        <p class="section-description">Internship entries are included below. Keep the descriptions and dates consistent with your official internship records.</p>
       </div>
-
       <div class="timeline">
-
-        <article class="experience">
-          <div class="experience-icon">✧</div>
-          <div>
-            <h3>AI/ML Internship — Cognevance Technologies</h3>
-            <div class="meta">Internship · AI/ML Projects</div>
-            <p>
-              Worked on AI/ML-oriented projects, including a movie
-              recommendation system and an NLP chatbot. Practised Python
-              development, model workflows, documentation, and GitHub-based
-              project sharing.
-            </p>
+        <article class="timeline-card">
+          <div class="timeline-head">
+            <h3>Frontend Development Intern</h3>
+            <span class="timeline-date">7 Feb 2026 – 11 Mar 2026</span>
           </div>
+          <p class="timeline-company">CodeAlpha</p>
+          <ul>
+            <li>Worked on frontend development tasks as part of an internship.</li>
+            <li>Practiced building and improving user-facing web interfaces.</li>
+            <li>Developed practical experience with web development workflows.</li>
+          </ul>
         </article>
 
-        <article class="experience">
-          <div class="experience-icon">⌘</div>
-          <div>
-            <h3>Frontend Development Internship — CodeAlpha</h3>
-            <div class="meta">7 February – 11 March 2026</div>
-            <p>
-              Gained hands-on frontend development experience through
-              practical implementation and structured development tasks.
-            </p>
+        <article class="timeline-card">
+          <div class="timeline-head">
+            <h3>AI/ML Intern</h3>
+            <span class="timeline-date">Confirm dates before publishing</span>
           </div>
+          <p class="timeline-company">Cognevance Technologies</p>
+          <ul>
+            <li>Worked on AI/ML learning projects, including a chatbot and a movie recommendation system.</li>
+            <li>Practiced Python-based data processing and machine learning concepts.</li>
+            <li>Documented project work and code in GitHub repositories.</li>
+          </ul>
         </article>
-
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- EDUCATION -->
-    <section class="section" id="education">
-      <div class="section-head">
-        <div>
-          <div class="kicker">Academic background</div>
-          <h2 class="section-title">Education</h2>
-        </div>
+  <!-- EDUCATION -->
+  <section id="education">
+    <div class="container reveal">
+      <div class="section-heading">
+        <span class="eyebrow">05. Education</span>
+        <h2 class="section-title">My academic <span class="gradient-text">background</span></h2>
+        <div class="underline"></div>
       </div>
-
-      <div class="timeline">
+      <div class="education-grid">
         <article class="education-card">
-          <h3>B.Tech — Computer Science Engineering (AI & ML)</h3>
-          <p>GRD IMT · Affiliated with UTU · Currently in third year</p>
+          <h3>B.Tech — Computer Science & Engineering</h3>
+          <p class="degree">Artificial Intelligence & Machine Learning</p>
+          <p>GRD IMT · Affiliated with UTU</p>
+          <p>Third Year</p>
         </article>
-
         <article class="education-card">
           <h3>Intermediate (Class XII)</h3>
-          <p>Gyandeep Sr Sec Public School, Shikohabad</p>
+          <p class="degree">Gyandeep Senior Secondary Public School</p>
+          <p>Shikohabad, Uttar Pradesh</p>
         </article>
-
         <article class="education-card">
           <h3>High School (Class X)</h3>
-          <p>St. Dominics Academy, Shikohabad</p>
+          <p class="degree">St. Dominics Academy</p>
+          <p>Shikohabad, Uttar Pradesh</p>
         </article>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- CONTACT -->
-    <section class="section" id="contact">
-      <div class="contact">
-        <div>
-          <div class="kicker">Get in touch</div>
-          <h2 class="section-title">Let's build something useful.</h2>
-          <p>
-            I'm open to AI/ML internships, Python development opportunities,
-            collaborations, and suitable freelance projects. Feel free to
-            connect with me.
-          </p>
-          <p>
-            Email:
-            <a class="contact-email" href="mailto:pateltanya559@gmail.com">pateltanya559@gmail.com</a>
-          </p>
-        </div>
-
-        <div class="contact-actions">
-          <a class="btn btn-primary"
-             href="https://www.linkedin.com/in/tanya-patel-632153352/"
-             target="_blank" rel="noopener noreferrer">
-            Connect on LinkedIn ↗
-          </a>
-
-          <a class="btn btn-secondary"
-             href="https://github.com/tanyapl-17"
-             target="_blank" rel="noopener noreferrer">
-            Explore GitHub ↗
-          </a>
-
-          <a class="btn btn-secondary" href="mailto:pateltanya559@gmail.com">
-            Send an Email ✉
-          </a>
-        </div>
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="container reveal">
+      <div class="section-heading">
+        <span class="eyebrow">06. Contact</span>
+        <h2 class="section-title">Let's build something <span class="gradient-text">useful</span></h2>
+        <div class="underline"></div>
+        <p class="section-description">Have an internship opportunity, a Python project, or an idea to discuss? Feel free to reach out.</p>
       </div>
-    </section>
 
-  </main>
+      <div class="contact-grid">
+        <div>
+          <h3>Connect with me</h3>
+          <p class="contact-copy">I'm interested in AI/ML internships, Python development, collaborative projects, and suitable freelance work.</p>
+          <div class="contact-list">
+            <a class="contact-item" href="mailto:pateltanya559@gmail.com">
+              <span class="contact-icon">📧</span>
+              <span><strong>Email</strong><small>pateltanya559@gmail.com</small></span>
+            </a>
+            <a class="contact-item" href="https://www.linkedin.com/in/tanya-patel-632153352/" target="_blank" rel="noopener noreferrer">
+              <span class="contact-icon">💼</span>
+              <span><strong>LinkedIn</strong><small>Connect professionally</small></span>
+            </a>
+            <a class="contact-item" href="https://github.com/tanyapl-17" target="_blank" rel="noopener noreferrer">
+              <span class="contact-icon">🐙</span>
+              <span><strong>GitHub</strong><small>Explore my code</small></span>
+            </a>
+          </div>
+        </div>
 
-  <footer>
-    <span>© <span id="year">2026</span> Tanya Patel. Built with care.</span>
-    <span>Aspiring AI/ML Engineer | Python Developer</span>
-    <a href="#home">Back to top ↑</a>
-  </footer>
+        <form class="contact-form" id="contactForm">
+          <div class="form-group">
+            <label for="name">YOUR NAME</label>
+            <input id="name" name="name" type="text" placeholder="Enter your name" required>
+          </div>
+          <div class="form-group">
+            <label for="email">YOUR EMAIL</label>
+            <input id="email" name="email" type="email" placeholder="you@example.com" required>
+          </div>
+          <div class="form-group">
+            <label for="message">MESSAGE</label>
+            <textarea id="message" name="message" placeholder="Tell me about your opportunity or project..." required></textarea>
+          </div>
+          <button class="btn btn-primary" type="submit">✉️ Send Email</button>
+          <p class="form-note">This opens your email application with the message prepared for you to send.</p>
+        </form>
+      </div>
+    </div>
+  </section>
+</main>
 
-</div>
+<footer>
+  <div class="container">
+    © <span id="year"></span> <strong>Tanya Patel</strong> · Aspiring AI/ML Engineer | Python Developer
+  </div>
+</footer>
 
 <script>
-  const menuBtn = document.getElementById("menuBtn");
+  // Mobile navigation
+  const menuToggle = document.getElementById("menuToggle");
   const navLinks = document.getElementById("navLinks");
 
-  menuBtn.addEventListener("click", () => {
+  menuToggle.addEventListener("click", () => {
     const isOpen = navLinks.classList.toggle("open");
-    menuBtn.setAttribute("aria-expanded", String(isOpen));
+    menuToggle.setAttribute("aria-expanded", String(isOpen));
+    menuToggle.textContent = isOpen ? "✕" : "☰";
   });
 
   navLinks.querySelectorAll("a").forEach(link => {
     link.addEventListener("click", () => {
       navLinks.classList.remove("open");
-      menuBtn.setAttribute("aria-expanded", "false");
+      menuToggle.setAttribute("aria-expanded", "false");
+      menuToggle.textContent = "☰";
     });
   });
 
-  document.getElementById("year").textContent = new Date().getFullYear();
-</script>
+  // Reveal sections as they enter the viewport
+  const revealElements = document.querySelectorAll(".reveal");
 
+  if ("IntersectionObserver" in window) {
+    const observer = new IntersectionObserver((entries, obs) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+          obs.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+
+    revealElements.forEach(element => observer.observe(element));
+  } else {
+    revealElements.forEach(element => element.classList.add("visible"));
+  }
+
+  // Highlight the navigation link for the current section
+  const sections = document.querySelectorAll("main section[id]");
+  const navAnchors = document.querySelectorAll(".nav-links a");
+
+  if ("IntersectionObserver" in window) {
+    const sectionObserver = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          navAnchors.forEach(anchor => {
+            anchor.classList.toggle(
+              "active",
+              anchor.getAttribute("href") === "#" + entry.target.id
+            );
+          });
+        }
+      });
+    }, { rootMargin: "-30% 0px -60% 0px" });
+
+    sections.forEach(section => sectionObserver.observe(section));
+  }
+
+  // Automatically update the copyright year
+  document.getElementById("year").textContent = new Date().getFullYear();
+
+  // Prepare an email instead of displaying a fake "message sent" alert.
+  document.getElementById("contactForm").addEventListener("submit", event => {
+    event.preventDefault();
+
+    const name = document.getElementById("name").value.trim();
+    const email = document.getElementById("email").value.trim();
+    const message = document.getElementById("message").value.trim();
+
+    if (!name || !email || !message) {
+      alert("Please complete all fields.");
+      return;
+    }
+
+    const subject = encodeURIComponent("Portfolio inquiry from " + name);
+    const body = encodeURIComponent(
+      "Name: " + name + "\n" +
+      "Email: " + email + "\n\n" +
+      "Message:\n" + message
+    );
+
+    window.location.href =
+      "mailto:pateltanya559@gmail.com?subject=" + subject + "&body=" + body;
+  });
+</script>
 </body>
 </html>
