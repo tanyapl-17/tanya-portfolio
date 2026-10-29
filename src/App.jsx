@@ -28,6 +28,7 @@ const projects = [
     tags: ["Python", "Streamlit", "Machine Learning", "Data Visualization"],
     demo: "https://salesdemo.streamlit.app/",
     repo: "https://github.com/tanyapl-17/cognevance_sales_prediction",
+    preview: true,
     demoLabel: "Live Demo",
     repoLabel: "Source Code"
   },
@@ -39,6 +40,7 @@ const projects = [
     tags: ["Python", "NLP", "Scikit-learn", "Streamlit"],
     demo: "https://nexaaibot.streamlit.app/",
     repo: "https://github.com/tanyapl-17/cognevance_ai_chatbot",
+    preview: true,
     demoLabel: "Live Demo",
     repoLabel: "Source Code"
   },
@@ -50,6 +52,7 @@ const projects = [
     tags: ["Python", "Pandas", "Recommendation Logic", "Data Analysis"],
     repo: "https://github.com/tanyapl-17/cognevance_movie_recommendation",
     demo: "https://movie-recommendation26.streamlit.app/",
+    preview: true,
     demoLabel: "Live Demo",
     repoLabel: "Source Code"
   },
@@ -122,30 +125,99 @@ function Hero() {
     <section className="hero" id="home">
       <div className="container hero-grid">
         <div className="hero-content reveal">
-          <div className="availability"><span className="dot" />Open to internships &amp; freelance opportunities</div>
-          <h1>Hi, I’m Tanya.<br /><span className="gradient-text">Aspiring AI/ML Engineer</span><br />&amp; Python Developer.</h1>
-          <p className="hero-copy">Turning ideas into intelligent solutions with Python &amp; AI/ML. I build practical applications and explore machine learning, NLP, and data-driven tools to solve real-world problems.</p>
-          <a className="btn btn-primary resume-button" href="/Tanya_Patel_resume.pdf" download="Tanya_Patel_resume.pdf">
-            <Download size={17} /> Download Resume
+          <div className="availability">
+            <span className="dot" />
+            Curious mind. Building intelligent solutions.
+          </div>
+
+          <h1>
+            Hi, I’m <span className="gradient-text">Tanya Patel.</span>
+            <br />
+            <span className="hero-role">Aspiring AI/ML Engineer</span>
+            <br />
+            &amp; Python Developer.
+          </h1>
+
+          <p className="hero-copy">
+            I turn ideas and data into intelligent solutions with Python and
+            AI. I love learning by building practical applications that solve
+            real-world problems.
+          </p>
+
+          <a
+            className="btn btn-primary resume-button"
+            href="/Tanya_Patel_resume.pdf"
+            download="Tanya_Patel_resume.pdf"
+          >
+            <Download size={17} />
+            Download Resume
           </a>
+
           <div className="follow-row">
             <span>Follow Me</span>
-            <a className="social-icon" href={github} target="_blank" rel="noreferrer" aria-label="Tanya Patel on GitHub"><Github size={20} /></a>
-            <a className="social-icon" href={linkedin} target="_blank" rel="noreferrer" aria-label="Tanya Patel on LinkedIn"><Linkedin size={20} /></a>
+
+            <a
+              className="social-icon"
+              href={github}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Open Tanya Patel's GitHub"
+              title="GitHub"
+            >
+              <Github size={20} />
+            </a>
+
+            <a
+              className="social-icon"
+              href={linkedin}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Open Tanya Patel's LinkedIn"
+              title="LinkedIn"
+            >
+              <Linkedin size={20} />
+            </a>
           </div>
         </div>
+
         <aside className="profile-card reveal">
           <div className="avatar">
-            <img src="/tanya-photo.jpeg" alt="Tanya Patel" onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src = "https://github.com/tanyapl-17/tanya-portfolio/raw/main/tanya-photo.jpeg"; }} />
+            <img
+              src="/tanya-photo.jpeg"
+              alt="Tanya Patel"
+              onError={(e) => {
+                e.currentTarget.onerror = null;
+                e.currentTarget.src =
+                  "https://github.com/tanyapl-17/tanya-portfolio/raw/main/tanya-photo.jpeg";
+              }}
+            />
           </div>
+
           <h2>Tanya Patel</h2>
           <p>B.Tech CSE (AI &amp; ML) · Third Year</p>
-          <div className="profile-role"><Sparkles size={16} /><span>Aspiring AI/ML Engineer | Python Developer</span></div>
+
+          <div className="profile-role">
+            <Sparkles size={16} />
+            <span>Aspiring AI/ML Engineer | Python Developer</span>
+          </div>
+
           <div className="mini-grid">
-            <div className="mini-box"><strong>Python</strong><span>Development</span></div>
-            <div className="mini-box"><strong>AI / ML</strong><span>Applied projects</span></div>
-            <div className="mini-box"><strong>Data</strong><span>Analysis &amp; insights</span></div>
-            <div className="mini-box"><strong>Web Apps</strong><span>Interactive tools</span></div>
+            <div className="mini-box">
+              <strong>Python</strong>
+              <span>Development</span>
+            </div>
+            <div className="mini-box">
+              <strong>AI / ML</strong>
+              <span>Applied projects</span>
+            </div>
+            <div className="mini-box">
+              <strong>Data</strong>
+              <span>Analysis &amp; insights</span>
+            </div>
+            <div className="mini-box">
+              <strong>Web Apps</strong>
+              <span>Interactive tools</span>
+            </div>
           </div>
         </aside>
       </div>
@@ -163,7 +235,10 @@ function About() {
             <p>I’m a third-year <strong>B.Tech Computer Science student specializing in Artificial Intelligence and Machine Learning</strong>. I enjoy building projects that help me apply programming and data concepts to practical problems.</p>
             <p>My current interests include <strong>Python development, machine learning, NLP, data analysis, and AI-powered applications</strong>. I learn by building, testing, improving, and documenting projects.</p>
             <p>I’m looking for internships and suitable freelance opportunities where I can contribute, strengthen my skills, and work on real-world problems.</p>
-            <blockquote className="about-quote">“Dream big, keep learning, and build things that make a difference.”<span>— Tanya Patel</span></blockquote>
+           <blockquote className="about-quote">
+  “Stay curious, keep building, and let your work make a difference.”
+  <span>— Tanya Patel</span>
+</blockquote>
           </div>
           <div className="stat-grid">
             <div className="stat"><strong>Python</strong><span>Core development skill</span></div>
@@ -200,20 +275,73 @@ function Projects() {
     <section id="projects">
       <div className="container reveal">
         <SectionHeading eyebrow="03. Featured Work" title="Projects built with" highlight="purpose" description="Explore my Python, machine learning, and data-focused projects. Open the live demos to try the deployed applications." />
-        <div className="projects-grid">
-          {projects.map(({ icon: Icon, type, title, description, tags, demo, repo, demoLabel, repoLabel }) => (
-            <article className="project-card" key={title}>
-              <div className="project-top"><div className="project-icon"><Icon size={23} /></div><span className="project-type">{type}</span></div>
-              <h3>{title}</h3>
-              <p>{description}</p>
-              <div className="project-tags">{tags.map((tag) => <span key={tag}>{tag}</span>)}</div>
-              <div className="project-links">
-                {demo && <a href={demo} target="_blank" rel="noreferrer">{demoLabel || "Live Demo"} <ArrowUpRight size={15} /></a>}
-                <a href={repo} target="_blank" rel="noreferrer">{repoLabel || "Source Code"} <ArrowUpRight size={15} /></a>
-              </div>
-            </article>
-          ))}
+       <div className="projects-grid">
+  {projects.map(
+    ({
+      icon: Icon,
+      type,
+      title,
+      description,
+      tags,
+      demo,
+      repo,
+      preview,
+      demoLabel,
+      repoLabel
+    }) => (
+      <article className="project-card" key={title}>
+        {preview && demo && (
+          <div className="project-preview">
+            <iframe
+              src={`${demo}${demo.includes("?") ? "&" : "?"}embed=true`}
+              title={`${title} dashboard preview`}
+              loading="lazy"
+              allow="clipboard-write"
+            />
+            <a
+              className="preview-link"
+              href={demo}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Open Full Dashboard <ArrowUpRight size={14} />
+            </a>
+          </div>
+        )}
+
+        <div className="project-content">
+          <div className="project-top">
+            <div className="project-icon">
+              <Icon size={23} />
+            </div>
+            <span className="project-type">{type}</span>
+          </div>
+
+          <h3>{title}</h3>
+          <p>{description}</p>
+
+          <div className="project-tags">
+            {tags.map((tag) => (
+              <span key={tag}>{tag}</span>
+            ))}
+          </div>
+
+          <div className="project-links">
+            {demo && (
+              <a href={demo} target="_blank" rel="noopener noreferrer">
+                {demoLabel || "Live Demo"} <ArrowUpRight size={15} />
+              </a>
+            )}
+
+            <a href={repo} target="_blank" rel="noopener noreferrer">
+              {repoLabel || "Source Code"} <ArrowUpRight size={15} />
+            </a>
+          </div>
         </div>
+      </article>
+    )
+  )}
+</div>
       </div>
     </section>
   );
@@ -235,7 +363,7 @@ function Experience() {
             </ul>
           </article>
           <article className="timeline-card">
-            <div className="timeline-head"><h3>AI/ML Intern <span className="ongoing-pill">Ongoing</span></h3><span className="timeline-date">October 2026 – Present</span></div>
+            <div className="timeline-head"><h3>AI/ML Intern <span className="ongoing-pill">Ongoing</span></h3><span className="timeline-date">October 2026 – ongoing</span></div>
             <p className="timeline-company">Cognevance Technologies</p>
             <ul>
               <li>Building AI/ML learning projects, including a chatbot and a movie recommendation system.</li>
@@ -298,12 +426,12 @@ useEffect(() => {
         <Experience />
         <Contact />
       </main>
-      <footer>
-        <div className="container">
-          <p>© {new Date().getFullYear()} <strong>Tanya Patel</strong></p>
-          <span>Aspiring AI/ML Engineer | Python Developer</span>
-        </div>
-      </footer>
+    <footer>
+  <div className="container">
+    <p>© {new Date().getFullYear()} <strong>Tanya Patel</strong></p>
+    <span>Aspiring AI/ML Engineer | Python Developer</span>
+  </div>
+</footer>
     </>
   );
 }
