@@ -127,7 +127,7 @@ function Hero() {
         <div className="hero-content reveal">
           <div className="availability">
             <span className="dot" />
-            Curious mind. Building intelligent solutions.
+           Open To Work
           </div>
 
           <h1>
@@ -201,24 +201,6 @@ function Hero() {
             <span>Aspiring AI/ML Engineer | Python Developer</span>
           </div>
 
-          <div className="mini-grid">
-            <div className="mini-box">
-              <strong>Python</strong>
-              <span>Development</span>
-            </div>
-            <div className="mini-box">
-              <strong>AI / ML</strong>
-              <span>Applied projects</span>
-            </div>
-            <div className="mini-box">
-              <strong>Data</strong>
-              <span>Analysis &amp; insights</span>
-            </div>
-            <div className="mini-box">
-              <strong>Web Apps</strong>
-              <span>Interactive tools</span>
-            </div>
-          </div>
         </aside>
       </div>
     </section>
@@ -229,23 +211,36 @@ function About() {
   return (
     <section id="about">
       <div className="container reveal">
-        <SectionHeading eyebrow="01. About Me" title="A little about" highlight="my journey" />
-        <div className="about-grid">
-          <div className="about-copy">
-            <p>I’m a third-year <strong>B.Tech Computer Science student specializing in Artificial Intelligence and Machine Learning</strong>. I enjoy building projects that help me apply programming and data concepts to practical problems.</p>
-            <p>My current interests include <strong>Python development, machine learning, NLP, data analysis, and AI-powered applications</strong>. I learn by building, testing, improving, and documenting projects.</p>
-            <p>I’m looking for internships and suitable freelance opportunities where I can contribute, strengthen my skills, and work on real-world problems.</p>
-           <blockquote className="about-quote">
-  “Stay curious, keep building, and let your work make a difference.”
-  <span>— Tanya Patel</span>
-</blockquote>
-          </div>
-          <div className="stat-grid">
-            <div className="stat"><strong>Python</strong><span>Core development skill</span></div>
-            <div className="stat"><strong>AI / ML</strong><span>Learning through projects</span></div>
-            <div className="stat"><strong>Streamlit</strong><span>Interactive web apps</span></div>
-            <div className="stat"><strong>GitHub</strong><span>Project version control</span></div>
-          </div>
+        <SectionHeading
+          eyebrow="01. About Me"
+          title="A little about"
+          highlight="my journey"
+        />
+
+        <div className="about-copy">
+          <p>
+            I’m a third-year B.Tech Computer Science student specializing in
+            Artificial Intelligence and Machine Learning. I enjoy turning ideas
+            into practical applications and exploring how technology can solve
+            real-world challenges.
+          </p>
+
+          <p>
+            Through internships and personal projects, I’m building hands-on
+            experience, learning from challenges, and continuously improving
+            my approach to software development.
+          </p>
+
+          <p>
+            I’m open to internship opportunities, collaborative projects, and
+            meaningful experiences where I can contribute, learn, and grow
+            as a developer.
+          </p>
+
+          <blockquote className="about-quote">
+            “Great things are built one idea, one experiment, and one improvement at a time.”
+            <span>— Tanya Patel</span>
+          </blockquote>
         </div>
       </div>
     </section>
